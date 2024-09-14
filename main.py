@@ -20,7 +20,7 @@ suaygiri = Actor("suaygırı", (320, 180))
 
 # Değişkenler
 puan = 0
-tiklama = 1
+tiklama = 1000
 mod = 'menü'
 
 def draw():
@@ -64,6 +64,7 @@ def bonus_2_icin():
 def on_mouse_down(button, pos):
     global puan
     global mod
+    global tiklama
     # Oyun Modu
     if button == mouse.LEFT and mod == "oyun":
          # Hayvanın üzerinde tıklama
@@ -98,4 +99,12 @@ def on_mouse_down(button, pos):
         if carpi.collidepoint(pos):
             mod = 'menü'
             
+        if timsah.collidepoint(pos) and puan >= 500:
+            puan -= 500
+            hayvan.image = 'timsah'
+            tiklama = 5
+        if suaygiri.collidepoint(pos) and puan >= 2500:
+            puan -= 2500
+            hayvan.image = 'suaygırı'
+            tiklama = 10
             
